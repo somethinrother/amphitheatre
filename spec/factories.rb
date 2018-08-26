@@ -23,4 +23,10 @@ FactoryBot.define do
     title { 'The Eye of the World' }
     description { 'Sweet book' }
   end
+
+  factory :blue_book do
+    chapter
+    title { "My character's crummy day" }
+    body { 'it sucked' }
+  end
 end
