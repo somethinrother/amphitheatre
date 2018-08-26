@@ -9,12 +9,18 @@ FactoryBot.define do
   factory :campaign do
     user
     title { 'Wheel of Time' }
-    description { 'Awesome book' }
+    description { 'Awesome series' }
   end
 
   factory :setting_detail do
     campaign
     title { 'Year' }
     description { '239' }
+  end
+
+  factory :chapter do
+    campaign
+    title { 'The Eye of the World' }
+    description { 'Sweet book' }
   end
 end

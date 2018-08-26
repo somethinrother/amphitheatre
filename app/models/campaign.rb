@@ -3,6 +3,7 @@ class Campaign < ApplicationRecord
   belongs_to :user
 
   has_many :setting_details
+  has_many :chapters
 
-  validates_presence_of :title, :description
+  validates_presence_of %i[title description]
 end

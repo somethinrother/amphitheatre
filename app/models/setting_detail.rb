@@ -2,5 +2,5 @@
 class SettingDetail < ApplicationRecord
   belongs_to :campaign
 
-  validates_presence_of :title, :description
+  validates_presence_of %i[title description]
 end

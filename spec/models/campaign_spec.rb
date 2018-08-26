@@ -32,4 +32,13 @@ RSpec.describe Campaign, type: :model do
     )
     expect(subject.setting_details.count).to eq(1)
   end
+
+  it 'can own a chapter' do
+    Chapter.create(
+      campaign: subject,
+      title: 'The Eye of the World',
+      description: 'Sweet book'
+    )
+    expect(subject.chapters.count).to eq(1)
+  end
 end

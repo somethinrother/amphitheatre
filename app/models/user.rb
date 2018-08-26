@@ -4,5 +4,5 @@ class User < ApplicationRecord
 
   has_many :campaigns
 
-  validates_presence_of :username, :email
+  validates_presence_of %i[username email]
 end
