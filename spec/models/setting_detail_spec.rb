@@ -23,4 +23,8 @@ RSpec.describe SettingDetail, type: :model do
     subject.description = nil
     expect(subject).to_not be_valid
   end
+
+  it 'belongs to a campaign' do
+    expect(subject.campaign).to eq(Campaign.first)
+  end
 end

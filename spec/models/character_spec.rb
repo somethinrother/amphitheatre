@@ -39,6 +39,14 @@ RSpec.describe Character, type: :model do
     expect(subject).to_not be_valid
   end
 
+  it 'belongs to a user' do
+    expect(subject.user).to eq(User.first)
+  end
+
+  it 'belongs to a campaign' do
+    expect(subject.campaign).to eq(Campaign.first)
+  end
+
   it 'can own a blue book' do
     create(:blue_book, character: subject)
     expect(subject.blue_books.count).to eq(1)
