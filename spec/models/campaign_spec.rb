@@ -25,20 +25,17 @@ RSpec.describe Campaign, type: :model do
   end
 
   it 'can own a setting detail' do
-    SettingDetail.create(
-      campaign: subject,
-      title: 'year',
-      description: '2018'
-    )
+    create(:setting_detail, campaign: subject)
     expect(subject.setting_details.count).to eq(1)
   end
 
   it 'can own a chapter' do
-    Chapter.create(
-      campaign: subject,
-      title: 'The Eye of the World',
-      description: 'Sweet book'
-    )
+    create(:chapter, campaign: subject)
     expect(subject.chapters.count).to eq(1)
+  end
+
+  it 'can own a character' do
+    create(:character, campaign: subject)
+    expect(subject.characters.count).to eq(1)
   end
 end

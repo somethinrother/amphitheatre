@@ -25,11 +25,7 @@ RSpec.describe Chapter, type: :model do
   end
 
   it 'can own a blue book' do
-    BlueBook.create(
-      chapter: subject,
-      title: "My character's crummy day",
-      body: 'it sucked'
-    )
+    create(:blue_book, chapter: subject)
     expect(subject.blue_books.count).to eq(1)
   end
 end
