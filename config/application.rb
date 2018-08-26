@@ -13,5 +13,7 @@ module Amphitheatre
     config.generators do |g|
       g.test_framework :rspec
     end
+
+    config.generators.javascript_engine = :js
   end
 end
