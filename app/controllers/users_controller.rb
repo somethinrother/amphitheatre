@@ -1,8 +1,19 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    serializer = JSONAPI::ResourceSerializer.new(UserResource)
-    hash = serializer.serialize_to_hash(UserResource.new(@user, nil))
+    hash = JsonSerializer.provide_hash(UserResource, @user)
     render json: hash
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def update
+
+  end
+
+  def destroy
+
   end
 end

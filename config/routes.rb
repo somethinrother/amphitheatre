@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   jsonapi_resources :campaigns
   jsonapi_resources :chapters
   jsonapi_resources :setting_details
-  jsonapi_resources :users
+  jsonapi_resources :users, only: %i[show new update destroy]
 end
