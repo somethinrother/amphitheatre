@@ -6,6 +6,7 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - 'bin/**/'
+    - 'spec/**/**'
     - 'stage/**/**'
 
 Style/FrozenStringLiteralComment:
