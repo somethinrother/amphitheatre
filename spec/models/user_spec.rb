@@ -28,4 +28,17 @@ RSpec.describe User, type: :model do
     subject.password_digest = nil
     expect(subject).to_not be_valid
   end
+
+  it 'has no campaigns by default' do
+    expect(subject.campaigns).to eq([])
+  end
+
+  it 'can own a campaign' do
+    Campaign.create(
+      user_id: subject.id,
+      title: 'Great title',
+      description: 'Stuff'
+    )
+    expect(subject.campaigns.count).to eq(1)
+  end
 end
