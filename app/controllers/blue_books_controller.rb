@@ -1,0 +1,2 @@
+class BlueBooksController < ApplicationController
+end
