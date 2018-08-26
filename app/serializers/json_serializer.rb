@@ -1,3 +1,4 @@
+# This class will help in the serialization of JSON data
 class JsonSerializer < JSONAPI::ResourceSerializer
   def self.provide_hash(resource, model)
     serializer = JsonSerializer.new(resource)

@@ -1,3 +1,4 @@
+# Controls the api responses for users
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
@@ -9,11 +10,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def update
+  def update; end
 
-  end
-
-  def destroy
-
-  end
+  def destroy; end
 end
