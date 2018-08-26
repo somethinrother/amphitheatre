@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe Campaign, type: :model do
+RSpec.describe SettingDetail, type: :model do
   subject do
-    create(:campaign)
+    create(:setting_detail)
   end
 
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
   end
 
-  it 'is not valid without a user' do
-    subject.user = nil
+  it 'is not valid without a campaign' do
+    subject.campaign = nil
     expect(subject).to_not be_valid
   end
 
@@ -22,14 +22,5 @@ RSpec.describe Campaign, type: :model do
   it 'is not valid without a description' do
     subject.description = nil
     expect(subject).to_not be_valid
-  end
-
-  it 'can own a setting detail' do
-    SettingDetail.create(
-      campaign: subject,
-      title: 'year',
-      description: '2018'
-    )
-    expect(subject.setting_details.count).to eq(1)
   end
 end
