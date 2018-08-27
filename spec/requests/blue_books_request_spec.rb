@@ -34,9 +34,7 @@ RSpec.describe 'Blue Book requests', :type => :request do
   describe 'POST /blue-books' do
     let(:chapter) { create(:chapter) }
     let(:character) { create(:character) }
-    let(:headers) do
-      { "ACCEPT": "application/vnd.api+json", "CONTENT_TYPE": "application/vnd.api+json" }
-    end
+    let(:headers) { Helpers::JSON::json_headers }
     let(:valid_attributes) do
       '{ "data": { "type": "blue-books", "relationships": { "chapter": { "data": { "type": "chapters", "id": "1" } }, "character": { "data": { "type": "characters", "id": "1" } } }, "attributes": { "title": "Fake Title", "body": "Pretty Awesome", "reward": "Awesome stuff" } } }'
     end

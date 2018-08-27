@@ -21,9 +21,7 @@ RSpec.describe 'Campaign requests', :type => :request do
 
   describe 'POST /campaigns' do
     let(:user) { create(:user) }
-    let(:headers) do
-      { "ACCEPT": "application/vnd.api+json", "CONTENT_TYPE": "application/vnd.api+json" }
-    end
+    let(:headers) { Helpers::JSON::json_headers }
     let(:valid_attributes) do
       '{ "data": { "type": "campaigns", "relationships": { "user": { "data": { "type": "users", "id": "1" } } }, "attributes": { "title": "Fake Title", "description": "Pretty Awesome" } } }'
     end

@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :thing do
+    
+  end
   sequence :username do |n|
     "person#{n}"
   end
