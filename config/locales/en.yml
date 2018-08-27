@@ -1,3 +1,4 @@
 en:
   valid_json_attributes:
     campaign: '{ "data": { "type": "campaigns", "relationships": { "user": { "data": { "type": "users", "id": "1" } } }, "attributes": { "title": "Fake Title", "description": "Pretty Awesome" } } }'
+    blue_book: '{ "data": { "type": "blue-books", "relationships": { "chapter": { "data": { "type": "chapters", "id": "1" } }, "character": { "data": { "type": "characters", "id": "1" } } }, "attributes": { "title": "Fake Title", "body": "Pretty Awesome", "reward": "Awesome stuff" } } }'
