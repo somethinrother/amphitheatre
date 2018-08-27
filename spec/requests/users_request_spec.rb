@@ -1,10 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe 'User resources', :type => :request do
+RSpec.describe 'User requests', :type => :request do
 
   describe 'GET /users/:id.json' do
 
     context 'when the request is valid' do
+
       it "can render a user's information" do
         user = create(:user)
         get "/users/#{user.id}.json"
@@ -18,9 +19,6 @@ RSpec.describe 'User resources', :type => :request do
           'email': user.email
         })
       end
-
     end
-
   end
-
 end
