@@ -22,9 +22,7 @@ RSpec.describe 'Campaign requests', :type => :request do
   describe 'POST /campaigns' do
     let(:user) { create(:user) }
     let(:headers) { Helpers::JSON::json_headers }
-    let(:valid_attributes) do
-      '{ "data": { "type": "campaigns", "relationships": { "user": { "data": { "type": "users", "id": "1" } } }, "attributes": { "title": "Fake Title", "description": "Pretty Awesome" } } }'
-    end
+    let(:valid_attributes) { Helpers::JSON::valid_attributes('campaign') }
 
     context 'when the request is valid' do
       it "can create a campaign" do

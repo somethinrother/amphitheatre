@@ -1,2 +1,3 @@
 en:
-  hello: "Hello world"
+  valid_json_attributes:
+    campaign: '{ "data": { "type": "campaigns", "relationships": { "user": { "data": { "type": "users", "id": "1" } } }, "attributes": { "title": "Fake Title", "description": "Pretty Awesome" } } }'
