@@ -26,8 +26,7 @@ RSpec.describe 'Campaign requests', :type => :request do
 
     context 'when the request is valid' do
       it "can create a campaign" do
-        user.id = 1
-        user.save
+        user.update_attributes(id: 1)
         post campaigns_path, params: valid_attributes, headers: headers
         hash_body = nil
         expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
