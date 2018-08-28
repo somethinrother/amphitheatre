@@ -21,7 +21,7 @@ RSpec.describe 'Campaign requests', :type => :request do
 
   describe 'POST /campaigns' do
     let(:user) { create(:user) }
-    let(:json_helper) { Helpers::JSON.new('campaign', { title: 'Wheel of Time', description: 'Great book' }) }
+    let(:json_helper) { Helpers::JSON.new('campaign', { title: 'Wheel of Time', description: 'Great book', user_id: user.id }) }
     let(:headers) { json_helper.json_headers }
     let(:valid_attributes) { json_helper.build_test_attributes }
 

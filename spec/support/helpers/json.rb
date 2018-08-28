@@ -1,11 +1,10 @@
 module Helpers
   class JSON
-    attr_accessor :model_name, :attributes, :relationships, :attr_access_string
+    attr_accessor :model_name, :attributes, :attr_access_string
 
     def initialize(model_name, attributes)
       @model_name = model_name
       @attributes = attributes
-      @relationships = relationships
       @attr_access_string = 'test_data.json_skeletons' + ".#{model_name}"
     end
 
