@@ -3,6 +3,3 @@ en:
     json_skeletons:
       campaign: '{ "data": { "type": "campaigns", "relationships": { "user": { "data": { "type": "users", "id": "1" } } }, "attributes": { "title": "%{attrs.title}", "description": "%{attrs.description}" } } }'
       blue_book: '{ "data": { "type": "blue-books", "relationships": { "chapter": { "data": { "type": "chapters", "id": "1" } }, "character": { "data": { "type": "characters", "id": "1" } } }, "attributes": { "title": "%{attrs.title}", "body": "%{attrs.body}", "reward": "%{attrs.reward}" } } }'
-    json_relationship_skeletons:
-      campaign: '"relationships": { "user": { "data": { "type": "users", "id": "1" } } },'
-      blue_book: '"relationships": { "chapter": { "data": { "type": "chapters", "id": "1" } }, "character": { "data": { "type": "characters", "id": "1" } } },'
