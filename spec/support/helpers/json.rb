@@ -29,8 +29,11 @@ module Helpers
     # I18n Builders
 
     def build_json
-      byebug
       fetch_data_type + construct_relationships + construct_attributes
+    end
+
+    def json_utility(desired_section)
+      I18n.t('json_skeletons.general.' + desired_section)
     end
 
     def fetch_data_type
@@ -39,11 +42,23 @@ module Helpers
     end
 
     def construct_relationships
-
+      relationship_access_string = @access_string + '.relationships'
+      relationship_string = json_utility('relationships_starter')
+      @relationships.each do |model, id|
+        single_relationship = relationship_access_string + ".#{model.to_s}"
+        relationship_string += I18n.t(single_relationship, id: id)
+      end
+      relationship_string += json_utility('relationships_ending')
     end
 
     def construct_attributes
-
+      attributes_access_string = @access_string + '.attributes'
+      attribute_string = json_utility('attributes_starter')
+      @attributes.each do |field, value|
+        single_attribute = attributes_access_string + ".#{field.to_s}"
+        attribute_string += I18n.t(single_attribute, field => value)
+      end
+      attribute_string += json_utility('attributes_ending')
     end
   end
 end
