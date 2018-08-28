@@ -1,14 +1,8 @@
 en:
   test_data:
     json_attribute_skeletons:
-      campaign: '{ "data": { "type": "campaigns", %{relationships} "attributes": { "title": "boof", "description": "borf" } } }'
-      blue_book: '{ "data": { "type": "blue-books", %{relationships} "attributes": { "title": "boof", "body": "donk", "reward": "boink" } } }'
-
+      campaign: '{ "data": { "type": "campaigns", %{relationships} "attributes": { "title": "%{attrs.title}", "description": "%{attrs.description}" } } }'
+      blue_book: '{ "data": { "type": "blue-books", %{relationships} "attributes": { "title": "%{attrs.title}", "body": "%{attrs.body}", "reward": "%{attrs.reward}" } } }'
     json_relationship_skeletons:
       campaign: '"relationships": { "user": { "data": { "type": "users", "id": "1" } } },'
       blue_book: '"relationships": { "chapter": { "data": { "type": "chapters", "id": "1" } }, "character": { "data": { "type": "characters", "id": "1" } } },'
-
-#
-# json_attribute_skeletons:
-#   campaign: '{ "data": { "type": "campaigns", %{relationships} "attributes": { "title": "%{title}", "description": "%{description}" } } }'
-#   blue_book: '{ "data": { "type": "blue-books", %{relationships} "attributes": { "title": "%{title}", "body": "%{body}", "reward": "%{reward}" } } }'
