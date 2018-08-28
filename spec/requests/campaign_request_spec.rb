@@ -20,13 +20,12 @@ RSpec.describe 'Campaign requests', :type => :request do
   end
 
   describe 'POST /campaigns' do
-    let(:user) { create(:user, id: 1) }
+    let(:user) { create(:user) }
 
     context 'when the request is valid' do
 
       it "can create a campaign" do
-        user
-        json_helper = Helpers::JSON.new('campaign', { title: 'Wheel of Time', description: 'Great book' }, {user: '1'})
+        json_helper = Helpers::JSON.new('campaign', { title: 'Wheel of Time', description: 'Great book' }, {user: user.id})
         headers = json_helper.json_headers
         valid_attributes = json_helper.build_json
         post campaigns_path, params: valid_attributes, headers: headers
