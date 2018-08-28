@@ -1,7 +1,7 @@
 en:
   json_skeletons:
     general:
-      relationships_starter: '"relationships": '
+      relationships_starter: '"relationships": { '
       relationships_ending: '}, '
       attributes_starter: '"attributes": { '
       attributes_ending: '} } }'
@@ -10,7 +10,7 @@ en:
       data/type: '{ "data": { "type": "campaigns", '
 
       relationships:
-        user: '{ "user": { "data": { "type": "users", "id": "%{id}" } } '
+        user: '"user": { "data": { "type": "users", "id": "%{id}" } } '
 
       attributes:
         title: '"title": "%{title}", '
@@ -21,7 +21,7 @@ en:
 
       relationships:
         chapter: '"chapter": { "data": { "type": "chapters", "id": "%{id}" } }, '
-        character: '"character": { "data": { "type": "characters", "id": "%{id} } }" '
+        character: '"character": { "data": { "type": "characters", "id": "%{id}" } } '
 
       attributes:
         title: '"title": "%{title}", '

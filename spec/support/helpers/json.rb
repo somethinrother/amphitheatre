@@ -16,18 +16,6 @@ module Helpers
       }
     end
 
-    def build_test_attributes
-      attr_string = @access_string + '.attributes.'
-      I18n.t(attr_string, attrs: @attributes)
-    end
-
-    def build_test_relationships
-      relationship_string = @access_string + '.relationships.'
-      I18n.t(relationship_string, attrs: @relationships)
-    end
-
-    # I18n Builders
-
     def build_json
       fetch_data_type + construct_relationships + construct_attributes
     end
