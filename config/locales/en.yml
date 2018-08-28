@@ -2,4 +2,4 @@ en:
   test_data:
     json_skeletons:
       campaign: '{ "data": { "type": "campaigns", "relationships": { "user": { "data": { "type": "users", "id": "1" } } }, "attributes": { "title": "%{attrs.title}", "description": "%{attrs.description}" } } }'
-      blue_book: '{ "data": { "type": "blue-books", "relationships": { "chapter": { "data": { "type": "chapters", "id": "1" } }, "character": { "data": { "type": "characters", "id": "1" } } }, "attributes": { "title": "%{attrs.title}", "body": "%{attrs.body}", "reward": "%{attrs.reward}" } } }'
+      blue_book: '{ "data": { "type": "blue-books", "relationships": { "chapter": { "data": { "type": "chapters", "id": "%{attrs.rels.chapter_id}" } }, "character": { "data": { "type": "characters", "id": "%{attrs.rels.character_id}" } } }, "attributes": { "title": "%{attrs.title}", "body": "%{attrs.body}", "reward": "%{attrs.reward}" } } }'
