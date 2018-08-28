@@ -35,7 +35,7 @@ RSpec.describe 'Blue Book requests', :type => :request do
     let(:chapter) { create(:chapter) }
     let(:character) { create(:character) }
     let(:headers) { Helpers::JSON::json_headers }
-    let(:valid_attributes) { Helpers::JSON::valid_attributes('blue_book') }
+    let(:valid_attributes) { Helpers::JSON::build_test_attributes('blue_book') }
 
     context 'when the request is valid' do
       it "can create a blue book" do
