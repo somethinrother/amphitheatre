@@ -18,7 +18,7 @@ module Helpers
 
     def build_test_attributes
       model_name_string = @model_name.to_s.downcase
-      @attr_access_string = 'test_data.json_attribute_skeletons' + ".#{model_name_string}"
+      @attr_access_string = 'test_data.json_skeletons' + ".#{model_name_string}"
       return model_json_with_relationships(model_name_string) if @relationship_data
       I18n.t(@attr_access_string, attrs: @attributes)
     end
