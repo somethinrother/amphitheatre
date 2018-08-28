@@ -40,7 +40,6 @@ RSpec.describe 'Blue Book requests', :type => :request do
         json_helper = Helpers::JSON.new('blue_book', { title: 'short story', body: 'super fun', reward: '3 MD' }, { chapter: chapter.id, character: character.id })
         headers = json_helper.json_headers
         valid_attributes = json_helper.build_json
-        byebug
         post blue_books_path, params: valid_attributes, headers: headers
         hash_body = nil
         expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
