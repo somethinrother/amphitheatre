@@ -1,19 +1,29 @@
 en:
-  test_data:
-    json_skeletons:
-      campaign: '{ "data": { "type": "campaigns", "relationships": { "user": { "data": { "type": "users", "id": "1" } } }, "attributes": { "title": "%{attrs.title}", "description": "%{attrs.description}" } } }'
-      blue_book: '{ "data": { "type": "blue-books", "relationships": { "chapter": { "data": { "type": "chapters", "id": "1" } }, "character": { "data": { "type": "characters", "id": "1" } } }, "attributes": { "title": "%{attrs.title}", "body": "%{attrs.body}", "reward": "%{attrs.reward}" } } }'
+  json_skeletons:
+    general:
+      relationships_starter: '"relationships": { '
+      relationship_ending: '}, '
+      attributes_starter: '"attributes": { '
+      attributes_ending: '} } }'
 
-# en:
-#   json_skeletons:
-#     data/type:
-#       campaign: '{ "data": { "type": "campaigns", '
-#       blue_book: '{ "data": { "type": "blue-books", '
-#
-#     relationships:
-#       campaign: '"relationships": { "user": { "data": { "type": "users", "id": "1" } } }, "attributes": '
-#       blue_book: '"relationships": { "chapter": { "data": { "type": "chapters", "id": "1" } }, "character": { "data": { "type": "characters", "id": "1" } } }, '
-#
-#     attributes:
-#       campaign: '{ "title": "%{attrs.title}", "description": "%{attrs.description}" } } }'
-#       blue_book: '"attributes": { "title": "%{attrs.title}", "body": "%{attrs.body}", "reward": "%{attrs.reward}" } } }'
+    campaign:
+      data/type: '{ "data": { "type": "campaigns", '
+
+      relationships:
+        user: '"user": { "data": { "type": "users", "id": "%{attrs.user_id}" } } '
+
+      attributes:
+        title: '"title": "%{attrs.title}", '
+        description: '"description": "%{attrs.description}" '
+
+    blue_book:
+      data/type: '{ "data": { "type": "blue-books", '
+
+      relationships:
+        chapter: '"chapter": { "data": { "type": "chapters", "id": "%{attrs.chapter_id}" } }, '
+        character: '"character": { "data": { "type": "characters", "id": "%{attrs.character_id} } }" '
+
+      attributes:
+        title: '"title": "%{attrs.title}", '
+        body: '"body": "%{attrs.body}", '
+        reward: '"reward": "%{attrs.reward}" '
