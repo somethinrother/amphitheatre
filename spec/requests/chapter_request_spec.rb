@@ -25,10 +25,12 @@ RSpec.describe 'Chapter requests', :type => :request do
 
   describe 'POST /chapters' do
     let(:campaign) { create(:campaign) }
+    let(:blue_book) { create(:blue_book) }
 
     context 'when the request is valid' do
       it "can create a chapter" do
-        json_helper = Helpers::JSON.new('blue_book', { title: 'short story', description: 'this chapter ROCKS' }, { campaign: campaign.id })
+        json_helper = Helpers::JSON.new('chapter', { title: 'short story', description: 'this chapter ROCKS' }, { campaign: campaign.id, blue_books: blue_book.id })
+        # byebug
         headers = json_helper.json_headers
         valid_attributes = json_helper.build_json
         post blue_books_path, params: valid_attributes, headers: headers

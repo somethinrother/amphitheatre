@@ -33,6 +33,7 @@ en:
 
       relationships:
         campaign: '"campaign": { "data": { "type": "campaigns", "id": "%{id}" } }, '
+        blue_books: '"blue-books": { "data": { "type": "blue-books", "id": "%{id}" } } '
 
       attributes:
         title: '"title": "%{title}", '
