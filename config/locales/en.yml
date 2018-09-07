@@ -1,5 +1,6 @@
 en:
   json_skeletons:
     successful_post:
-      campaign: '{ "data": { "type": "campaigns", "relationships": { "user": { "data": { "type": "users", "id": "1" } } }, "attributes": { "title": "title", "description": "description" } } }'
       blue_book: '{ "data": { "type": "blue-books", "relationships": { "chapter": { "data": { "type": "chapters", "id": "1" } }, "character": { "data": { "type": "characters", "id": "1" } } }, "attributes": { "title": "title", "body": "body", "reward": "reward" } } }'
+      campaign: '{ "data": { "type": "campaigns", "relationships": { "user": { "data": { "type": "users", "id": "1" } } }, "attributes": { "title": "title", "description": "description" } } }'
+      chapter: '{ "data": { "type": "chapters", "relationships": { "campaign": { "data": { "type": "campaigns",	"id": "1"	}	}	},	"attributes": {	"title": "title",	"description": "description"	}	} }'
