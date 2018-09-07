@@ -12,7 +12,6 @@ RSpec.describe 'Campaign requests', :type => :request do
 
         expect {hash_body = JSON.parse(response.body).with_indifferent_access}.not_to raise_exception
         expect(hash_body['data']['attributes']).to match_array([['title', campaign.title], ['description', campaign.description]])
-        expect(hash_body['data']['attributes']).to match({ 'title': campaign.title, 'description': campaign.description })
         expect(hash_body['data']['relationships'].keys).to match_array(['user', 'setting-details', 'chapters', 'characters'])
         expect(response.status).to eq(200)
       end

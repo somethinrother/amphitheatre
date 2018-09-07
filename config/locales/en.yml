@@ -27,3 +27,13 @@ en:
         title: '"title": "%{title}", '
         body: '"body": "%{body}", '
         reward: '"reward": "%{reward}" '
+
+    chapter:
+      data/type: '{ "data": { "type": "chapters", '
+
+      relationships:
+        campaign: '"campaign": { "data": { "type": "campaigns", "id": "%{id}" } }, '
+
+      attributes:
+        title: '"title": "%{title}", '
+        description: '"description": "%{description}" '
