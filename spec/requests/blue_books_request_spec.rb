@@ -25,15 +25,17 @@ RSpec.describe 'Blue Book requests', :type => :request do
   end
 
   describe 'POST /blue-books' do
-    let(:chapter) { create(:chapter) }
-    let(:character) { create(:character) }
+    let(:chapter) { create(:chapter, id: 1) }
+    let(:character) { create(:character, id: 1) }
 
     context 'when the request is valid' do
       it "can create a blue book" do
-        json_helper = Helpers::JSON.new('blue_book', { title: 'short story', body: 'super fun', reward: '3 MD' }, { chapter: chapter.id, character: character.id })
+        chapter
+        character
+        json_helper = Helpers::JSON.new('blue_book')
         headers = json_helper.json_headers
-        valid_attributes = json_helper.build_json
-        post blue_books_path, params: valid_attributes, headers: headers
+        successful_post = json_helper.successful_post
+        post blue_books_path, params: successful_post, headers: headers
         hash_body = nil
         expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
         expect(response.status).to eq(201)

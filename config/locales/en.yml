@@ -1,40 +1,5 @@
 en:
   json_skeletons:
-    general:
-      relationships_starter: '"relationships": { '
-      relationships_ending: '}, '
-      attributes_starter: '"attributes": { '
-      attributes_ending: '} } }'
-
-    campaign:
-      data/type: '{ "data": { "type": "campaigns", '
-
-      relationships:
-        user: '"user": { "data": { "type": "users", "id": "%{id}" } } '
-
-      attributes:
-        title: '"title": "%{title}", '
-        description: '"description": "%{description}" '
-
-    blue_book:
-      data/type: '{ "data": { "type": "blue-books", '
-
-      relationships:
-        chapter: '"chapter": { "data": { "type": "chapters", "id": "%{id}" } }, '
-        character: '"character": { "data": { "type": "characters", "id": "%{id}" } } '
-
-      attributes:
-        title: '"title": "%{title}", '
-        body: '"body": "%{body}", '
-        reward: '"reward": "%{reward}" '
-
-    chapter:
-      data/type: '{ "data": { "type": "chapters", '
-
-      relationships:
-        campaign: '"campaign": { "data": { "type": "campaigns", "id": "%{id}" } }, '
-        blue_books: '"blue-books": { "data": { "type": "blue-books", "id": "%{id}" } } '
-
-      attributes:
-        title: '"title": "%{title}", '
-        description: '"description": "%{description}" '
+    successful_post:
+      campaign: '{ "data": { "type": "campaigns", "relationships": { "user": { "data": { "type": "users", "id": "1" } } }, "attributes": { "title": "title", "description": "description" } } }'
+      blue_book: '{ "data": { "type": "blue-books", "relationships": { "chapter": { "data": { "type": "chapters", "id": "1" } }, "character": { "data": { "type": "characters", "id": "1" } } }, "attributes": { "title": "title", "body": "body", "reward": "reward" } } }'
