@@ -5,3 +5,4 @@ en:
       campaign: '{ "data": { "type": "campaigns", "relationships": { "user": { "data": { "type": "users", "id": "1" } } }, "attributes": { "title": "title", "description": "description" } } }'
       chapter: '{ "data": { "type": "chapters", "relationships": { "campaign": { "data": { "type": "campaigns",	"id": "1"	}	}	},	"attributes": {	"title": "title",	"description": "description"	}	} }'
       character: '{ "data": { "type": "characters", "relationships": { "user": { "data": { "type": "users", "id": "1" } }, "campaign": { "data": { "type": "campaigns",	"id": "1"	}	}	},	"attributes": {	"name": "name",	"description": "description", "pc-class": "class", "level": 1	}	} }'
+      setting_detail: '{ "data": { "type": "setting-details", "relationships": { "campaign": { "data": { "type": "campaigns",	"id": "1"	}	}	},	"attributes": {	"title": "title",	"description": "description"	}	} }'
