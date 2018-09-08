@@ -23,7 +23,7 @@ RSpec.describe 'Chapter requests', :type => :request do
     end
   end
 
-  describe 'POST /blue-books' do
+  describe 'POST /chapters' do
     let(:campaign) { create(:campaign, id: 1) }
 
     context 'when the request is valid' do
