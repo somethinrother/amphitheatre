@@ -38,7 +38,7 @@ RSpec.describe 'Character requests', :type => :request do
     let(:user) { create(:user, id: 1) }
 
     context 'when the request is valid' do
-      it "can create a characters" do
+      it "can create a character" do
         campaign
         user
         json_helper = Helpers::JSON.new('character')

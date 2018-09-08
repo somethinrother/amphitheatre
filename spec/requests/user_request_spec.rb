@@ -21,4 +21,18 @@ RSpec.describe 'User requests', :type => :request do
       end
     end
   end
+
+  describe 'POST /users' do
+    context 'when the request is valid' do
+      it "can create a user" do
+        json_helper = Helpers::JSON.new('user')
+        headers = json_helper.json_headers
+        successful_post = json_helper.successful_post
+        post users_path, params: successful_post, headers: headers
+        hash_body = nil
+        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        expect(response.status).to eq(201)
+      end
+    end
+  end
 end
