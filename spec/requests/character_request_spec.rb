@@ -2,10 +2,37 @@ require 'rails_helper'
 
 RSpec.describe 'Character requests', :type => :request do
 
-  describe 'GET /characters/:id.json' do
+  describe 'GET requests to' do
+    context '/characters.json' do
+      it 'returns the information of all characters' do
+        character_a = create(:character)
+        character_b = create(:character)
+        get "/characters.json"
+        hash_body = nil
 
-    context 'when the request is valid' do
-      it "can render a characters's information" do
+        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        expect(hash_body['data'].length).to eq(2)
+        expect(hash_body['data'].first['attributes']).to match(
+          {
+            'name': character_a.name,
+            'description': character_a.description,
+            'pc-class': character_a.pc_class,
+            'level': character_a.level
+          }
+        )
+        expect(hash_body['data'].second['attributes']).to match(
+          {
+            'name': character_b.name,
+            'description': character_b.description,
+            'pc-class': character_b.pc_class,
+            'level': character_b.level
+          }
+        )
+      end
+    end
+
+    context '/characters/:id.json' do
+      it "renders a characters's information" do
         character = create(:character)
         get "/characters/#{character.id}.json"
         hash_body = nil
@@ -33,7 +60,7 @@ RSpec.describe 'Character requests', :type => :request do
     end
   end
 
-  describe 'POST /characters' do
+  describe 'POST requests' do
     let(:campaign) { create(:campaign, id: 1) }
     let(:user) { create(:user, id: 1) }
 
