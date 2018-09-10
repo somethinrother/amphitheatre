@@ -92,7 +92,7 @@ RSpec.describe 'Character requests', :type => :request do
         json_helper = Helpers::JSON.new('character')
         headers = json_helper.json_headers
         successful_put = json_helper.successful_put(character.id)
-        patch "/characters/#{character.id}", params: successful_put, headers: headers
+        put character_path(character), params: successful_put, headers: headers
         hash_body = nil
         expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
         expect(hash_body["data"]["id"]).to eq(character.id.to_s)
