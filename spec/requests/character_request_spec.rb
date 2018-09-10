@@ -10,7 +10,9 @@ RSpec.describe 'Character requests', :type => :request do
         character_b = create(:character)
         get "/characters.json"
 
-        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        expect {
+          hash_body = JSON.parse(response.body).with_indifferent_access
+        }.not_to raise_exception
         data = hash_body['data']
         expect(data.length).to eq(2)
         expect(data.first['attributes']).to match(
@@ -37,7 +39,9 @@ RSpec.describe 'Character requests', :type => :request do
           character = create(:character)
           get "/characters/#{character.id}.json"
 
-          expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+          expect {
+            hash_body = JSON.parse(response.body).with_indifferent_access
+          }.not_to raise_exception
           expect(hash_body['data']['attributes']).to match(
             {
               'name': character.name,
@@ -56,7 +60,9 @@ RSpec.describe 'Character requests', :type => :request do
         character = create(:character)
         get "/characters/#{character.id}.json"
 
-        expect {hash_body = JSON.parse(response.body).with_indifferent_access}.not_to raise_exception
+        expect {
+          hash_body = JSON.parse(response.body).with_indifferent_access
+        }.not_to raise_exception
         data = hash_body['data']
         expect(data['attributes']).to match_array(
           [
@@ -89,11 +95,13 @@ RSpec.describe 'Character requests', :type => :request do
         campaign
         user
         json_helper = Helpers::JSON.new('character')
-        headers = json_helper.json_headers
-        successful_post = json_helper.successful_post
-        post characters_path, params: successful_post, headers: headers
+        post characters_path,
+          params: json_helper.successful_post,
+          headers: json_helper.json_headers
 
-        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        expect {
+          hash_body = JSON.parse(response.body).with_indifferent_access
+        }.not_to raise_exception
         expect(response.status).to eq(201)
       end
     end
@@ -112,9 +120,13 @@ RSpec.describe 'Character requests', :type => :request do
         json_helper = Helpers::JSON.new('character')
         headers = json_helper.json_headers
         successful_put = json_helper.successful_put(character.id)
-        put character_path(character), params: successful_put, headers: headers
+        put character_path(character),
+          params: json_helper.successful_put(character.id),
+          headers: json_helper.json_headers
 
-        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        expect {
+          hash_body = JSON.parse(response.body).with_indifferent_access
+        }.not_to raise_exception
         data = hash_body["data"]
         attributes = data["attributes"]
         expect(data["id"]).to eq(character.id.to_s)

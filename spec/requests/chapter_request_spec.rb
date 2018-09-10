@@ -10,7 +10,9 @@ RSpec.describe 'Chapter requests', :type => :request do
         chapter_b = create(:chapter)
         get "/chapters.json"
 
-        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        expect {
+          hash_body = JSON.parse(response.body).with_indifferent_access
+        }.not_to raise_exception
         data = hash_body['data']
         expect(data.first['attributes']).to match(
           {
@@ -35,7 +37,9 @@ RSpec.describe 'Chapter requests', :type => :request do
         chapter = create(:chapter)
         get "/chapters/#{chapter.id}.json"
 
-        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        expect {
+          hash_body = JSON.parse(response.body).with_indifferent_access
+        }.not_to raise_exception
         expect(hash_body['data']['attributes']).to match(
           {
             'title': chapter.title,
@@ -54,11 +58,13 @@ RSpec.describe 'Chapter requests', :type => :request do
       it "can create a chapter" do
         campaign
         json_helper = Helpers::JSON.new('chapter')
-        headers = json_helper.json_headers
-        successful_post = json_helper.successful_post
-        post chapters_path, params: successful_post, headers: headers
+        post chapters_path,
+          params: json_helper.successful_post,
+          headers: json_helper.json_headers
 
-        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        expect {
+          hash_body = JSON.parse(response.body).with_indifferent_access
+        }.not_to raise_exception
         expect(response.status).to eq(201)
       end
     end
@@ -73,11 +79,13 @@ RSpec.describe 'Chapter requests', :type => :request do
         campaign
         chapter
         json_helper = Helpers::JSON.new('chapter')
-        headers = json_helper.json_headers
-        successful_put = json_helper.successful_put(chapter.id)
-        put chapter_path(chapter), params: successful_put, headers: headers
+        put chapter_path(chapter),
+          params: json_helper.successful_put(chapter.id),
+          headers: json_helper.json_headers
 
-        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        expect {
+          hash_body = JSON.parse(response.body).with_indifferent_access
+        }.not_to raise_exception
         data = hash_body["data"]
         attributes = data["attributes"]
         expect(data["id"]).to eq(chapter.id.to_s)
