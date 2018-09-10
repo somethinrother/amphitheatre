@@ -29,6 +29,24 @@ RSpec.describe 'Character requests', :type => :request do
           }
         )
       end
+
+      context '/character/:id.json' do
+        it 'returns the information of one character' do
+          character = create(:character)
+          get "/characters/#{character.id}.json"
+          hash_body = nil
+
+          expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+          expect(hash_body['data']['attributes']).to match(
+            {
+              'name': character.name,
+              'description': character.description,
+              'pc-class': character.pc_class,
+              'level': character.level
+            }
+          )
+        end
+      end
     end
 
     context '/characters/:id.json' do
