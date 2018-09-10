@@ -29,9 +29,10 @@ RSpec.describe 'Character requests', :type => :request do
             'level': character_b.level
           }
         )
+        expect(response.status).to eq(200)
       end
 
-      context '/character/:id.json' do
+      context '/characters/:id.json' do
         it 'returns the information of one character' do
           character = create(:character)
           get "/characters/#{character.id}.json"
@@ -45,6 +46,7 @@ RSpec.describe 'Character requests', :type => :request do
               'level': character.level
             }
           )
+          expect(response.status).to eq(200)
         end
       end
     end

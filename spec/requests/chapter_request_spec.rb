@@ -1,23 +1,47 @@
 require 'rails_helper'
 
 RSpec.describe 'Chapter requests', :type => :request do
+  hash_body = nil
 
-  describe 'GET /chapters/:id.json' do
+  describe 'GET requests to' do
+    context '/characters.json' do
+      it "returns the information of all chapters" do
+        chapter_a = create(:chapter)
+        chapter_b = create(:chapter)
+        get "/chapters.json"
 
-    context 'when the request is valid' do
-      it "can render a chapter's information" do
+        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        data = hash_body['data']
+        expect(data.first['attributes']).to match(
+          {
+            'title': chapter_a.title,
+            'description': chapter_a.description,
+          }
+        )
+        expect(data.second['attributes']).to match(
+          {
+            'title': chapter_b.title,
+            'description': chapter_b.description
+          }
+        )
+        expect(data.first['relationships'].keys).to match_array(["blue-books", "campaign"])
+        expect(data.second['relationships'].keys).to match_array(["blue-books", "campaign"])
+        expect(response.status).to eq(200)
+      end
+    end
+
+    context '/chapters/:id.json' do
+      it 'returns the information of one chapter' do
         chapter = create(:chapter)
         get "/chapters/#{chapter.id}.json"
-        hash_body = nil
 
-        expect {hash_body = JSON.parse(response.body).with_indifferent_access}.not_to raise_exception
-        expect(hash_body['data']['attributes']).to match_array(
-          [
-            ['title', chapter.title],
-            ['description', chapter.description],
-          ]
+        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        expect(hash_body['data']['attributes']).to match(
+          {
+            'title': chapter.title,
+            'description': chapter.description
+          }
         )
-        expect(hash_body['data']['relationships'].keys).to match_array(["blue-books", "campaign"])
         expect(response.status).to eq(200)
       end
     end
