@@ -122,4 +122,21 @@ RSpec.describe 'Character requests', :type => :request do
       end
     end
   end
+
+  describe 'DELETE requests' do
+    let(:character) { create(:character) }
+
+    context 'when the request is valid' do
+      it 'deletes the character' do
+        character
+        expect(Character.all.length).to eq(1)
+        json_helper = Helpers::JSON.new('character')
+        headers = json_helper.json_headers
+        delete character_path(character), headers: headers
+        hash_body = nil
+        expect(Character.all.length).to eq(0)
+        expect(response.status).to eq(204)
+      end
+    end
+  end
 end
