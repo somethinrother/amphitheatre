@@ -57,9 +57,33 @@ RSpec.describe 'Chapter requests', :type => :request do
         headers = json_helper.json_headers
         successful_post = json_helper.successful_post
         post chapters_path, params: successful_post, headers: headers
-        hash_body = nil
+
         expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
         expect(response.status).to eq(201)
+      end
+    end
+  end
+
+  describe 'PUT requests' do
+    let(:chapter) { create(:chapter, title: 'Super cool chapter', description: 'Wow') }
+    let(:campaign) { create(:campaign, id: 1) }
+
+    context 'when the request is valid' do
+      it 'updates the character' do
+        campaign
+        chapter
+        json_helper = Helpers::JSON.new('chapter')
+        headers = json_helper.json_headers
+        successful_put = json_helper.successful_put(chapter.id)
+        put chapter_path(chapter), params: successful_put, headers: headers
+
+        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        data = hash_body["data"]
+        attributes = data["attributes"]
+        expect(data["id"]).to eq(chapter.id.to_s)
+        expect(attributes["title"]).to eq('title')
+        expect(attributes["description"]).to eq('description')
+        expect(response.status).to eq(200)
       end
     end
   end
