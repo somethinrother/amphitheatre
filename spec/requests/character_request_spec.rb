@@ -78,4 +78,30 @@ RSpec.describe 'Character requests', :type => :request do
       end
     end
   end
+
+  describe 'PUT requests' do
+    let(:character) { create(:character, name: 'Bobo', description: 'So brave', pc_class: 'Fighter', level: 3) }
+    let(:campaign) { create(:campaign, id: 1) }
+    let(:user) { create(:user, id: 1) }
+
+    context 'when the request is valid' do
+      it 'updates the character' do
+        campaign
+        user
+        character
+        json_helper = Helpers::JSON.new('character')
+        headers = json_helper.json_headers
+        successful_put = json_helper.successful_put(character.id)
+        patch "/characters/#{character.id}", params: successful_put, headers: headers
+        hash_body = nil
+        expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+        expect(hash_body["data"]["id"]).to eq(character.id.to_s)
+        expect(hash_body["data"]["attributes"]["name"]).to eq('name')
+        expect(hash_body["data"]["attributes"]["description"]).to eq('description')
+        expect(hash_body["data"]["attributes"]["pc-class"]).to eq('class')
+        expect(hash_body["data"]["attributes"]["level"]).to eq(1)
+        expect(response.status).to eq(200)
+      end
+    end
+  end
 end

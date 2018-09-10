@@ -13,13 +13,14 @@ module Helpers
       }
     end
 
-    def i18n_utility(desired_section)
-      I18n.t('json_skeletons.' + desired_section)
-    end
-
     def successful_post
       access_string = 'successful_post.' + @model_name
-      i18n_utility(access_string)
+      I18n.t('json_skeletons.' + access_string)
+    end
+
+    def successful_put(model_id)
+      access_string = 'successful_put.' + @model_name
+      I18n.t('json_skeletons.' + access_string, id: model_id)
     end
   end
 end
