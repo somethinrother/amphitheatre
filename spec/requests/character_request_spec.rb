@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Character requests', :type => :request do
+  hash_body = nil
 
   describe 'GET requests to' do
     context '/characters.json' do
@@ -8,11 +9,11 @@ RSpec.describe 'Character requests', :type => :request do
         character_a = create(:character)
         character_b = create(:character)
         get "/characters.json"
-        hash_body = nil
 
         expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
-        expect(hash_body['data'].length).to eq(2)
-        expect(hash_body['data'].first['attributes']).to match(
+        data = hash_body['data']
+        expect(data.length).to eq(2)
+        expect(data.first['attributes']).to match(
           {
             'name': character_a.name,
             'description': character_a.description,
@@ -20,7 +21,7 @@ RSpec.describe 'Character requests', :type => :request do
             'level': character_a.level
           }
         )
-        expect(hash_body['data'].second['attributes']).to match(
+        expect(data.second['attributes']).to match(
           {
             'name': character_b.name,
             'description': character_b.description,
@@ -34,7 +35,6 @@ RSpec.describe 'Character requests', :type => :request do
         it 'returns the information of one character' do
           character = create(:character)
           get "/characters/#{character.id}.json"
-          hash_body = nil
 
           expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
           expect(hash_body['data']['attributes']).to match(
@@ -53,10 +53,10 @@ RSpec.describe 'Character requests', :type => :request do
       it "renders a characters's information" do
         character = create(:character)
         get "/characters/#{character.id}.json"
-        hash_body = nil
 
         expect {hash_body = JSON.parse(response.body).with_indifferent_access}.not_to raise_exception
-        expect(hash_body['data']['attributes']).to match_array(
+        data = hash_body['data']
+        expect(data['attributes']).to match_array(
           [
             ['name', character.name],
             ['description', character.description],
@@ -64,7 +64,7 @@ RSpec.describe 'Character requests', :type => :request do
             ['pc-class', character.pc_class],
           ]
         )
-        expect(hash_body['data']['attributes']).to match(
+        expect(data['attributes']).to match(
           {
             'name': character.name,
             'description': character.description,
@@ -72,7 +72,7 @@ RSpec.describe 'Character requests', :type => :request do
             'level': character.level
           }
         )
-        expect(hash_body['data']['relationships'].keys).to match_array(['blue-books', 'campaign', 'user'])
+        expect(data['relationships'].keys).to match_array(['blue-books', 'campaign', 'user'])
         expect(response.status).to eq(200)
       end
     end
@@ -90,7 +90,7 @@ RSpec.describe 'Character requests', :type => :request do
         headers = json_helper.json_headers
         successful_post = json_helper.successful_post
         post characters_path, params: successful_post, headers: headers
-        hash_body = nil
+
         expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
         expect(response.status).to eq(201)
       end
@@ -111,13 +111,15 @@ RSpec.describe 'Character requests', :type => :request do
         headers = json_helper.json_headers
         successful_put = json_helper.successful_put(character.id)
         put character_path(character), params: successful_put, headers: headers
-        hash_body = nil
+
         expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
-        expect(hash_body["data"]["id"]).to eq(character.id.to_s)
-        expect(hash_body["data"]["attributes"]["name"]).to eq('name')
-        expect(hash_body["data"]["attributes"]["description"]).to eq('description')
-        expect(hash_body["data"]["attributes"]["pc-class"]).to eq('class')
-        expect(hash_body["data"]["attributes"]["level"]).to eq(1)
+        data = hash_body["data"]
+        attributes = data["attributes"]
+        expect(data["id"]).to eq(character.id.to_s)
+        expect(attributes["name"]).to eq('name')
+        expect(attributes["description"]).to eq('description')
+        expect(attributes["pc-class"]).to eq('class')
+        expect(attributes["level"]).to eq(1)
         expect(response.status).to eq(200)
       end
     end
@@ -133,7 +135,7 @@ RSpec.describe 'Character requests', :type => :request do
         json_helper = Helpers::JSON.new('character')
         headers = json_helper.json_headers
         delete character_path(character), headers: headers
-        hash_body = nil
+
         expect(Character.all.length).to eq(0)
         expect(response.status).to eq(204)
       end
