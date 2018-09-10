@@ -4,7 +4,7 @@ RSpec.describe 'Chapter requests', :type => :request do
   hash_body = nil
 
   describe 'GET requests to' do
-    context '/characters.json' do
+    context '/chapters.json' do
       it "returns the information of all chapters" do
         chapter_a = create(:chapter)
         chapter_b = create(:chapter)
@@ -69,7 +69,7 @@ RSpec.describe 'Chapter requests', :type => :request do
     let(:campaign) { create(:campaign, id: 1) }
 
     context 'when the request is valid' do
-      it 'updates the character' do
+      it 'updates the chapter' do
         campaign
         chapter
         json_helper = Helpers::JSON.new('chapter')
@@ -84,6 +84,23 @@ RSpec.describe 'Chapter requests', :type => :request do
         expect(attributes["title"]).to eq('title')
         expect(attributes["description"]).to eq('description')
         expect(response.status).to eq(200)
+      end
+    end
+  end
+
+  describe 'DELETE requests' do
+    let(:chapter) { create(:chapter) }
+
+    context 'when the request is valid' do
+      it 'deletes the chapter' do
+        chapter
+        expect(Chapter.all.length).to eq(1)
+        json_helper = Helpers::JSON.new('chapter')
+        headers = json_helper.json_headers
+        delete chapter_path(chapter), headers: headers
+
+        expect(Chapter.all.length).to eq(0)
+        expect(response.status).to eq(204)
       end
     end
   end
