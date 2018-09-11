@@ -1,0 +1,7 @@
+<h1>Favorite Posts</h1>
+{{#each model as |campaign|}}
+  {{debugger}}
+  <p>{{campaign.title}}</p>
+  <p>{{campaign.description}}</p>
+{{/each}}
+{{outlet}}
