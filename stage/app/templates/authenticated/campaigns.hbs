@@ -1,0 +1,6 @@
+<h1>Your Campaigns</h1>
+{{#each model as |campaign|}}
+  <p class='title'>{{campaign.title}}</p>
+  <p class='description'>{{campaign.description}}</p>
+{{/each}}
+{{outlet}}
