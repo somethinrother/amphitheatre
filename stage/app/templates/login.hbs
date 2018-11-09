@@ -1,22 +1,11 @@
 <div class='box'>
   <form class='field' {{action 'authenticate' on='submit'}}>
-    <div class='field'>
-      <label class='label' for='identification'>Login</label>
-      <div class='control'>
-        {{input data-test-login='identification' id='identification' class='input' placeholder='Enter Login' value=identification}}
-      </div>
-    </div>
-
-    <div class='field'>
-      <label class='label' for='password'>Password</label>
-      <div class='control'>
-        {{input data-test-login='password' id='password' class='input' placeholder='Enter Password' type='password' value=password}}
-      </div>
-    </div>
+    {{form-input class='field' label='login' field='identification' type='input' placeholder='Enter login' value=identification}}
+    {{form-input class='field' label='password' field='password' type='password' placeholder='Enter password' value=password}}
 
     <div class='field'>
       <div class='control'>
-        <button data-test-login='submit' class='button is-link' type='submit'>Login</button>
+        <button data-test-login='submit' class='button is-link' type='submit'>login</button>
       </div>
     </div>
   </form>
