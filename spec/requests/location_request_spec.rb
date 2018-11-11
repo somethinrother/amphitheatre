@@ -5,10 +5,10 @@ RSpec.describe 'Location requests', :type => :request do
 
   describe 'GET requests to' do
     context '/locations.json' do
-      it "returns the information of all locations" do
+      it 'returns the information of all locations' do
         location_a = create(:location)
         location_b = create(:location)
-        get "/locations.json"
+        get '/locations.json'
 
         expect {
           hash_body = JSON.parse(response.body).with_indifferent_access
@@ -61,7 +61,6 @@ RSpec.describe 'Location requests', :type => :request do
         post locations_path,
           params: json_helper.successful_post,
           headers: json_helper.json_headers
-
         expect {
           hash_body = JSON.parse(response.body).with_indifferent_access
         }.not_to raise_exception
@@ -86,11 +85,11 @@ RSpec.describe 'Location requests', :type => :request do
         expect {
           hash_body = JSON.parse(response.body).with_indifferent_access
         }.not_to raise_exception
-        data = hash_body["data"]
-        attributes = data["attributes"]
-        expect(data["id"]).to eq(location.id.to_s)
-        expect(attributes["name"]).to eq('name')
-        expect(attributes["description"]).to eq('description')
+        data = hash_body['data']
+        attributes = data['attributes']
+        expect(data['id']).to eq(location.id.to_s)
+        expect(attributes['name']).to eq('name')
+        expect(attributes['description']).to eq('description')
         expect(response.status).to eq(200)
       end
     end

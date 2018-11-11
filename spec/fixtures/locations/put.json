@@ -11,7 +11,7 @@
       }
     },
     "attributes": {
-      "title": "name",
+      "name": "name",
       "description": "description"
     }
   }
