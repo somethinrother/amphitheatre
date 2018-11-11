@@ -1,1 +1,7 @@
-<h1>{{model.title}}</h1>
+<div class='content box'>
+  <h1>{{model.title}}</h1>
+  <p>{{model.description}}</p>
+  {{#link-to 'authenticated.campaigns.index' class='button'}}
+    Back
+  {{/link-to}}
+</div>
