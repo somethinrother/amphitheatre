@@ -1,12 +1,14 @@
-<div class='panel'>
-  <h1 class='panel-heading' data-test-campaigns='header'>Your Campaigns</h1>
-  {{#each model.campaigns as |campaign|}}
-    {{#link-to 'authenticated.campaigns.show' campaign class='panel-block' data-test-campaigns='campaign-title'}}
-      {{campaign.title}}
-    {{/link-to}}
-  {{/each}}
-</div>
+<div class='content box'>
+  <div class='panel'>
+    <h1 class='panel-heading' data-test-campaigns='header'>Your Campaigns</h1>
+    {{#each model.campaigns as |campaign|}}
+      {{#link-to 'authenticated.campaigns.show' campaign class='panel-block' data-test-campaigns='campaign-title'}}
+        {{campaign.title}}
+      {{/link-to}}
+    {{/each}}
+  </div>
 
-{{#link-to 'authenticated.campaigns.new' class='button is-small' data-test-campaigns='new'}}
-  Create New Campaign?
-{{/link-to}}
+  {{#link-to 'authenticated.campaigns.new' class='button is-small' data-test-campaigns='new'}}
+    Create New Campaign?
+  {{/link-to}}
+</div>
