@@ -1,0 +1,17 @@
+{
+  "data": {
+    "type": "locations",
+    "relationships": {
+      "campaign": {
+        "data": {
+          "type": "campaigns",
+          "id": "1"
+        }
+      }
+    },
+    "attributes": {
+      "title": "name",
+      "description": "description"
+    }
+  }
+}
