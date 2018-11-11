@@ -6,6 +6,9 @@
       {{form-input label='Description' field='description' type='input' placeholder="Enter your campaign's description" value=model.description}}
 
       <button class='button is-link' type='submit' name='button'>submit</button>
+      {{#link-to 'authenticated.campaigns.index' class='button is-dark'}}
+        back
+      {{/link-to}}
     </form>
   </div>
 </div>
