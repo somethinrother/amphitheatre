@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :location do
+    
+  end
   factory :thing do
     
   end
