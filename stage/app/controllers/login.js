@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   session: service(),
+  currentUser: service('current-user'),
 
   actions: {
     async authenticate() {

@@ -3,6 +3,10 @@ export default function() {
   this.get('/me', function(db) {
     return db.users.all()[0];
   });
+  this.get('/users/:id', function(db) {
+    let user = db.users.all().models[0];
+    return user;
+  });
   this.post('/users', function(db, request) {
     var attrs = JSON.parse(request.requestBody).data.attributes;
     return db.users.create(attrs);
