@@ -1,7 +1,5 @@
 FactoryBot.define do
-  factory :thing do
-    
-  end
+  # SEQUENCES
   sequence :username do |n|
     "person#{n}"
   end
@@ -22,21 +20,16 @@ FactoryBot.define do
     n
   end
 
-  factory :user do
-    username
-    email
-    password { 'password' }
-    password_confirmation { 'password' }
+  # MODELS
+  factory :blue_book do
+    chapter
+    character
+    title
+    body { generate(:description) }
   end
 
   factory :campaign do
     user
-    title
-    description
-  end
-
-  factory :setting_detail do
-    campaign
     title
     description
   end
@@ -56,10 +49,22 @@ FactoryBot.define do
     level { generate(:number) }
   end
 
-  factory :blue_book do
-    chapter
-    character
+  factory :location do
+    campaign
+    name { generate(:title) }
+    description { generate(:description) }
+  end
+
+  factory :setting_detail do
+    campaign
     title
-    body { generate(:description) }
+    description
+  end
+
+  factory :user do
+    username
+    email
+    password { 'password' }
+    password_confirmation { 'password' }
   end
 end

@@ -27,8 +27,8 @@ RSpec.describe 'Campaign requests', :type => :request do
             'description': campaign_b.description
           }
         )
-        expect(data.first['relationships'].keys).to match_array(['user', 'setting-details', 'chapters', 'characters'])
-        expect(data.second['relationships'].keys).to match_array(['user', 'setting-details', 'chapters', 'characters'])
+        expect(data.first['relationships'].keys).to match_array(['chapters', 'characters', 'locations', 'setting-details', 'user'])
+        expect(data.second['relationships'].keys).to match_array(['chapters', 'characters', 'locations', 'setting-details', 'user'])
         expect(response.status).to eq(200)
       end
     end
