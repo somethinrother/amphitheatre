@@ -35,4 +35,18 @@ RSpec.describe Event, type: :model do
       expect(subject.chapter).to eq(Chapter.first)
     end
   end
+
+  describe 'when serializing to arrays' do
+    it 'character_ids can accept strings' do
+      subject.character_ids << '1'
+      expect(subject).to be_valid
+      expect(subject.character_ids).to eq(['1'])
+    end
+
+    it 'location_ids can accept strings' do
+      subject.location_ids << '1'
+      expect(subject).to be_valid
+      expect(subject.location_ids).to eq(['1'])
+    end
+  end
 end
