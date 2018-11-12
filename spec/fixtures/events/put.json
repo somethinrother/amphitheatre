@@ -1,0 +1,28 @@
+{
+  "data": {
+    "type": "events",
+    "id": "1",
+    "relationships": {
+      "chapter": {
+        "data": {
+          "type": "chapters",
+          "id": "1"
+        }
+      }
+    },
+    "attributes": {
+      "title": "Super cool event",
+      "description": "Wow",
+      "character-ids": [
+        "3",
+        "5",
+        "7"
+      ],
+      "location-ids": [
+        "4",
+        "2",
+        "1"
+      ]
+    }
+  }
+}
