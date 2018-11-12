@@ -73,7 +73,6 @@ RSpec.describe 'Event requests', :type => :request do
         expect {
           hash_body = JSON.parse(response.body).with_indifferent_access
         }.not_to raise_exception
-        # byebug
         expect(response.status).to eq(201)
       end
     end
