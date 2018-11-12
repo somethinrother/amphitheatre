@@ -1,0 +1,17 @@
+{
+  "data": {
+    "type": "events",
+    "relationships": {
+      "chapter": {
+        "data": {
+          "type": "chapters",
+          "id": "1"
+        }
+      }
+    },
+    "attributes": {
+      "title": "title",
+      "description": "description"
+    }
+  }
+}
