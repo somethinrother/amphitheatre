@@ -11,7 +11,7 @@ addons:
   postgresql: '9.6'
 
 env:
-- "RAILS_ENV=ci RACK_ENV=ci"
+- "RAILS_ENV=ci RACK_ENV=ci SECRET_KEY_BASE=test"
 
 before_install:
   - gem update --system
