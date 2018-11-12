@@ -49,7 +49,11 @@ FactoryBot.define do
     level { generate(:number) }
   end
 
-  factory :event do; end
+  factory :event do
+    chapter
+    title { generate(:title) }
+    description { generate(:description) }
+  end
 
   factory :location do
     campaign
