@@ -12,12 +12,12 @@
     "attributes": {
       "title": "title",
       "description": "description",
-      "character_ids": [
+      "character-ids": [
         "1",
         "2",
         "3"
       ],
-      "location_ids": [
+      "location-ids": [
         "2",
         "3",
         "4"

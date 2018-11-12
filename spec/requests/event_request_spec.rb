@@ -73,6 +73,7 @@ RSpec.describe 'Event requests', :type => :request do
         expect {
           hash_body = JSON.parse(response.body).with_indifferent_access
         }.not_to raise_exception
+        # byebug
         expect(response.status).to eq(201)
       end
     end
@@ -97,10 +98,10 @@ RSpec.describe 'Event requests', :type => :request do
         data = hash_body["data"]
         attributes = data["attributes"]
         expect(data["id"]).to eq(event.id.to_s)
-        expect(attributes["title"]).to eq('title')
-        expect(attributes["description"]).to eq('description')
-        expect(attributes["character-ids"]).to eq('character_ids')
-        expect(attributes["location-ids"]).to eq('location_ids')
+        expect(attributes["title"]).to eq(event.title)
+        expect(attributes["description"]).to eq(event.description)
+        expect(attributes["character-ids"]).to eq(event.character_ids)
+        expect(attributes["location-ids"]).to eq(event.location_ids)
         expect(response.status).to eq(200)
       end
     end

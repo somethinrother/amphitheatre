@@ -11,17 +11,17 @@
       }
     },
     "attributes": {
-      "title": "title",
-      "description": "description",
-      "character_ids": [
-        "1",
-        "2",
-        "3"
-      ],
-      "location_ids": [
-        "2",
+      "title": "Super cool event",
+      "description": "Wow",
+      "character-ids": [
         "3",
-        "4"
+        "5",
+        "7"
+      ],
+      "location-ids": [
+        "4",
+        "2",
+        "1"
       ]
     }
   }
