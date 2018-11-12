@@ -20,3 +20,6 @@ production:
   database: amphitheatre_production
   username: amphitheatre
   password: <%= ENV['AMPHITHEATRE_DATABASE_PASSWORD'] %>
+
+ci:
+  <<: *test
