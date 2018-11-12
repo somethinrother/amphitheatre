@@ -26,6 +26,5 @@ before_script:
   - bundle exec rake db:migrate
 
 script:
-  - rubocop
   - bundle exec rspec
   - bundle exec rake ember:test
