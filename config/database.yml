@@ -9,7 +9,7 @@ development:
   database: amphitheatre_development
   pool: 5
 
-test:
+test: &test
   adapter: postgresql
   encoding: unicode
   database: amphitheatre_test
@@ -23,3 +23,4 @@ production:
 
 ci:
   <<: *test
+  username: postgres
