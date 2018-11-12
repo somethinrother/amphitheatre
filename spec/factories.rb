@@ -49,6 +49,8 @@ FactoryBot.define do
     level { generate(:number) }
   end
 
+  factory :event do; end
+
   factory :location do
     campaign
     name { generate(:title) }
