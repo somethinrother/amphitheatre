@@ -17,14 +17,18 @@ RSpec.describe 'Event requests', :type => :request do
         data = hash_body['data']
         expect(data.first['attributes']).to match(
           {
-            'title': event_a.title,
+            'character-ids': event_a.character_ids,
             'description': event_a.description,
+            'location-ids': event_a.location_ids,
+            'title': event_a.title
           }
         )
         expect(data.second['attributes']).to match(
           {
-            'title': event_b.title,
-            'description': event_b.description
+            'character-ids': event_b.character_ids,
+            'description': event_b.description,
+            'location-ids': event_b.location_ids,
+            'title': event_b.title
           }
         )
         expect(data.first['relationships'].keys).to match_array(['chapter'])
@@ -44,7 +48,9 @@ RSpec.describe 'Event requests', :type => :request do
         expect(hash_body['data']['attributes']).to match(
           {
             'title': event.title,
-            'description': event.description
+            'description': event.description,
+            'character-ids': event.character_ids,
+            'location-ids': event.location_ids
           }
         )
         expect(response.status).to eq(200)
@@ -73,7 +79,7 @@ RSpec.describe 'Event requests', :type => :request do
   end
 
   describe 'PUT requests' do
-    let(:event) { create(:event, id: 1, title: 'Super cool event', description: 'Wow') }
+    let(:event) { create(:event, id: 1, title: 'Super cool event', description: 'Wow', character_ids: ['3', '5', '7'], location_ids: ['4', '2', '1']) }
     let(:chapter) { create(:chapter, id: 1) }
 
     context 'when the request is valid' do
@@ -93,6 +99,8 @@ RSpec.describe 'Event requests', :type => :request do
         expect(data["id"]).to eq(event.id.to_s)
         expect(attributes["title"]).to eq('title')
         expect(attributes["description"]).to eq('description')
+        expect(attributes["character-ids"]).to eq('character_ids')
+        expect(attributes["location-ids"]).to eq('location_ids')
         expect(response.status).to eq(200)
       end
     end

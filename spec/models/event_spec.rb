@@ -40,13 +40,13 @@ RSpec.describe Event, type: :model do
     it 'character_ids can accept strings' do
       subject.character_ids << '1'
       expect(subject).to be_valid
-      expect(subject.character_ids).to eq(['1'])
+      expect(subject.character_ids).to match_array(['11', '12', '13', '1'])
     end
 
     it 'location_ids can accept strings' do
       subject.location_ids << '1'
       expect(subject).to be_valid
-      expect(subject.location_ids).to eq(['1'])
+      expect(subject.location_ids).to match_array(['14', '15', '16', '1'])
     end
   end
 end

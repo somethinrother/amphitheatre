@@ -20,6 +20,10 @@ FactoryBot.define do
     n
   end
 
+  sequence :id_array do |n|
+    ["#{n}", "#{n+1}", "#{n+2}"]
+  end
+
   # MODELS
   factory :blue_book do
     chapter
@@ -53,6 +57,8 @@ FactoryBot.define do
     chapter
     title { generate(:title) }
     description { generate(:description) }
+    character_ids { generate(:id_array) }
+    location_ids { generate(:id_array) }
   end
 
   factory :location do

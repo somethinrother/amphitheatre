@@ -11,7 +11,17 @@
     },
     "attributes": {
       "title": "title",
-      "description": "description"
+      "description": "description",
+      "character_ids": [
+        "1",
+        "2",
+        "3"
+      ],
+      "location_ids": [
+        "2",
+        "3",
+        "4"
+      ]
     }
   }
 }
