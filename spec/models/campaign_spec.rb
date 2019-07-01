@@ -39,10 +39,5 @@ RSpec.describe Campaign, type: :model do
       create(:chapter, campaign: subject)
       expect(subject.chapters.count).to eq(1)
     end
-
-    it 'can own a character' do
-      create(:character, campaign: subject)
-      expect(subject.characters.count).to eq(1)
-    end
   end
 end
