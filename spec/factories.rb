@@ -47,14 +47,6 @@ FactoryBot.define do
     level { generate(:number) }
   end
 
-  factory :event do
-    chapter
-    title { generate(:title) }
-    description { generate(:description) }
-    character_ids { generate(:id_array) }
-    location_ids { generate(:id_array) }
-  end
-
   factory :location do
     campaign
     name { generate(:title) }
