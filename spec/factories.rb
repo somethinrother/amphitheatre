@@ -38,15 +38,6 @@ FactoryBot.define do
     description
   end
 
-  factory :character do
-    user
-    campaign
-    name { generate(:username) }
-    description
-    pc_class { 'fighty' }
-    level { generate(:number) }
-  end
-
   factory :location do
     campaign
     name { generate(:title) }
