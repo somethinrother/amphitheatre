@@ -61,12 +61,6 @@ FactoryBot.define do
     description { generate(:description) }
   end
 
-  factory :setting_detail do
-    campaign
-    title
-    description
-  end
-
   factory :user do
     username
     email
