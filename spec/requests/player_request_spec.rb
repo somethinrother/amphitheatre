@@ -38,7 +38,7 @@ RSpec.describe 'Player requests', :type => :request do
           }.not_to raise_exception
           expect(hash_body['data']['attributes']).to match(
             {
-              'name': player.role
+              'role': player.role
             }
           )
           expect(response.status).to eq(200)
@@ -115,7 +115,7 @@ RSpec.describe 'Player requests', :type => :request do
         data = hash_body["data"]
         attributes = data["attributes"]
         expect(data["id"]).to eq(player.id.to_s)
-        expect(attributes["role"]).to eq('role')
+        expect(attributes["role"]).to eq('PC')
         expect(response.status).to eq(200)
       end
     end
