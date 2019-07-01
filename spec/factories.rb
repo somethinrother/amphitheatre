@@ -47,7 +47,7 @@ FactoryBot.define do
   factory :player do
     user
     campaign
-    role { ['GM', 'PC'] }
+    role { ['GM', 'PC'].sample }
   end
 
   factory :user do
