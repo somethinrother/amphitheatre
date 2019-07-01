@@ -44,6 +44,12 @@ FactoryBot.define do
     description { generate(:description) }
   end
 
+  factory :player do
+    campaign
+    user
+    role { ['GM', 'PC'] }
+  end
+
   factory :user do
     username
     email
