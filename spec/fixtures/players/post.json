@@ -1,0 +1,22 @@
+{
+  "data": {
+    "type": "players",
+    "relationships": {
+      "user": {
+        "data": {
+          "type": "users",
+          "id": "1"
+        }
+      },
+      "campaign": {
+        "data": {
+          "type": "campaigns",
+          "id": "1"
+        }
+      }
+    },
+    "attributes": {
+      "role": "GM"
+    }
+  }
+}
