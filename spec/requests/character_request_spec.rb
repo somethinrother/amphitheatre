@@ -80,7 +80,7 @@ RSpec.describe 'Character requests', :type => :request do
             'level': character.level
           }
         )
-        expect(data['relationships'].keys).to match_array(['blue-books', 'campaign', 'user'])
+        expect(data['relationships'].keys).to match_array(['campaign', 'user'])
         expect(response.status).to eq(200)
       end
     end

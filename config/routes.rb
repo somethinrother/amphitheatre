@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   use_doorkeeper
 
-  jsonapi_resources :blue_books
   jsonapi_resources :campaigns
   jsonapi_resources :chapters
   jsonapi_resources :characters

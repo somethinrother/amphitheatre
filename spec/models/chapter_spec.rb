@@ -34,10 +34,5 @@ RSpec.describe Chapter, type: :model do
     it 'belongs to a campaign' do
       expect(subject.campaign).to eq(Campaign.first)
     end
-
-    it 'can own a blue book' do
-      create(:blue_book, chapter: subject)
-      expect(subject.blue_books.count).to eq(1)
-    end
   end
 end

@@ -25,12 +25,6 @@ FactoryBot.define do
   end
 
   # MODELS
-  factory :blue_book do
-    chapter
-    character
-    title
-    body { generate(:description) }
-  end
 
   factory :campaign do
     user
