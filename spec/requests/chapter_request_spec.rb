@@ -26,8 +26,8 @@ RSpec.describe 'Chapter requests', :type => :request do
             'description': chapter_b.description
           }
         )
-        expect(data.first['relationships'].keys).to match_array(["blue-books", "campaign"])
-        expect(data.second['relationships'].keys).to match_array(["blue-books", "campaign"])
+        expect(data.first['relationships'].keys).to match_array(["campaign"])
+        expect(data.second['relationships'].keys).to match_array(["campaign"])
         expect(response.status).to eq(200)
       end
     end
