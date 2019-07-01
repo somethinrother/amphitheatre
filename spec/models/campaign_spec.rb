@@ -35,11 +35,6 @@ RSpec.describe Campaign, type: :model do
       expect(subject.user).to eq(User.first)
     end
 
-    it 'can own a setting detail' do
-      create(:setting_detail, campaign: subject)
-      expect(subject.setting_details.count).to eq(1)
-    end
-
     it 'can own a chapter' do
       create(:chapter, campaign: subject)
       expect(subject.chapters.count).to eq(1)

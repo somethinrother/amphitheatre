@@ -5,5 +5,4 @@ class CampaignResource < JSONAPI::Resource
   has_many :chapters
   has_many :characters
   has_many :locations
-  has_many :setting_details
 end

@@ -1,2 +1,0 @@
-class SettingDetailsController < ApplicationController
-end

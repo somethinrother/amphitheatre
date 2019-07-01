@@ -26,13 +26,6 @@ Chapter.create!(campaign: campaign,
                 title: 'The Great Hunt',
                 description: 'The adventure continues!')
 
-SettingDetail.create!(campaign: campaign,
-                      title: 'Location',
-                      description: 'Two Rivers')
-SettingDetail.create!(campaign: campaign,
-                      title: 'Experience Track',
-                      description: 'Fast')
-
 # GM Characters
 Character.create!(user: user,
                   campaign: campaign,

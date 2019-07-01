@@ -5,7 +5,6 @@ class Campaign < ApplicationRecord
   has_many :chapters
   has_many :characters
   has_many :locations
-  has_many :setting_details
 
   validates_presence_of %i[title description]
 end
